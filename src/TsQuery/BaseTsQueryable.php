@@ -44,7 +44,7 @@ abstract class BaseTsQueryable implements TsQueryable
      */
     public function sql()
     {
-        return sprintf('%s(COALESCE(?, get_current_ts_config()), ?)', $this->tsFunction);
+        return sprintf('%s(\'hungarian\', COALESCE(?, get_current_ts_config()), ?)', $this->tsFunction);
     }
 
     /**
