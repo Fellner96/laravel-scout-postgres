@@ -108,6 +108,7 @@ class PostgresEngine extends Engine
      */
     protected function toVector(Model $model)
     {
+        dd('vector');
         $fields = collect($model->toSearchableArray())
             ->map(function ($value) {
                 return $value === null ? '' : $value;
@@ -121,7 +122,6 @@ class PostgresEngine extends Engine
         // See https://www.postgresql.org/docs/current/static/textsearch-controls.html
         $vector = 'to_tsvector(COALESCE(?, get_current_ts_config()), ?)';
         if ($this->config('unaccent') === true) {
-            dd('unaccent');
             $vector = 'to_tsvector(COALESCE(?, get_current_ts_config()), unaccent(?))';
         }
 
