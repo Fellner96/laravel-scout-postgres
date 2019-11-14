@@ -119,6 +119,7 @@ class PostgresEngine extends Engine
         // by the selected text search configuration which can be set globally in config/scout.php
         // file or individually for each model in searchableOptions()
         // See https://www.postgresql.org/docs/current/static/textsearch-controls.html
+        dump('nounaccent');
         $vector = 'to_tsvector(COALESCE(?, get_current_ts_config()), ?)';
         if ($this->config('unaccent') === true) {
             dump('unaccent');
