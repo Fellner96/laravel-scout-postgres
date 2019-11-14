@@ -121,6 +121,7 @@ class PostgresEngine extends Engine
         // See https://www.postgresql.org/docs/current/static/textsearch-controls.html
         $vector = 'to_tsvector(COALESCE(?, get_current_ts_config()), ?)';
         if ($this->config('unaccent') === true) {
+            dump('unaccent');
             $vector = 'to_tsvector(COALESCE(?, get_current_ts_config()), unaccent(?))';
         }
 
